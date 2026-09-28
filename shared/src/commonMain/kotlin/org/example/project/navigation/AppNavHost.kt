@@ -7,7 +7,7 @@ import androidx.navigation.compose.rememberNavController
 import org.example.project.movies.presentation.screen.MoviesScreen
 import org.example.project.profile.presentation.screen.ProfileScreen
 import org.example.project.signin.presentation.screen.LoginScreen
-
+import org.example.project.earthquakes.presentation.screen.EarthquakeScreen
 @Composable
 fun AppNavHost() {
 
@@ -15,7 +15,7 @@ fun AppNavHost() {
 
     NavHost(
         navController = navController,
-        startDestination = NavRoute.Login
+        startDestination = NavRoute.Earthquakes
     ) {
 
         composable<NavRoute.Login> {
@@ -30,6 +30,10 @@ fun AppNavHost() {
 
         composable<NavRoute.Profile> {
             ProfileScreen()
+        }
+
+        composable<NavRoute.Earthquakes> {
+            EarthquakeScreen()
         }
     }
 }

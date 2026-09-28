@@ -10,6 +10,11 @@ import org.example.project.movies.data.repository.CatalogRepositoryImpl
 import org.example.project.movies.data.service.CatalogService
 import org.example.project.movies.domain.repository.CatalogRepository
 
+import org.example.project.earthquakes.data.datasource.EarthquakeRemoteDataSource
+import org.example.project.earthquakes.data.repository.EarthquakeRepositoryImpl
+import org.example.project.earthquakes.data.service.EarthquakeService
+import org.example.project.earthquakes.domain.repository.EarthquakeRepository
+
 import org.koin.dsl.module
 
 val dataModule = module {
@@ -28,5 +33,13 @@ val dataModule = module {
 
     single<CatalogRepository> {
         CatalogRepositoryImpl(get())
+    }
+
+    single<EarthquakeRemoteDataSource> {
+        EarthquakeService()
+    }
+
+    single<EarthquakeRepository> {
+        EarthquakeRepositoryImpl(get())
     }
 }
