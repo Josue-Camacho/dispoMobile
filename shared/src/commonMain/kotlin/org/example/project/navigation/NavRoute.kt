@@ -14,6 +14,9 @@ sealed class NavRoute {
     @Serializable
     data object Profile : NavRoute()
 
+    @Serializable
+    data object Earthquakes : NavRoute()
+
 
 
 }
