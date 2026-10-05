@@ -10,8 +10,6 @@ fun initKoinAndroid(context: Context) {
         androidContext(context)
         androidLogger()
 
-        modules(
-            sharedModules()
-        )
+        modules(sharedModules())
     }
 }
