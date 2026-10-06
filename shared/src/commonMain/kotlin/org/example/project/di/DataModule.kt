@@ -9,25 +9,26 @@ import org.example.project.movies.data.datasource.CatalogRemoteDataSource
 import org.example.project.movies.data.repository.CatalogRepositoryImpl
 import org.example.project.movies.data.service.CatalogService
 import org.example.project.movies.domain.repository.CatalogRepository
-<<<<<<< HEAD
 
 import org.example.project.earthquakes.data.datasource.EarthquakeRemoteDataSource
 import org.example.project.earthquakes.data.repository.EarthquakeRepositoryImpl
 import org.example.project.earthquakes.data.service.EarthquakeService
 import org.example.project.earthquakes.domain.repository.EarthquakeRepository
 
-=======
 import org.example.project.config.AppDatabase
 import org.example.project.movies.data.dao.DollarDao
 import org.example.project.movies.data.datasource.DollarLocalDataSource
 import org.example.project.movies.data.repository.DollarRepositoryImpl
 import org.example.project.movies.domain.repository.DollarRepository
-import org.koin.core.module.dsl.singleOf
->>>>>>> a74076a (Firebase and cambios de bd)
-import org.koin.dsl.module
 
+import org.koin.core.module.dsl.singleOf
+import org.koin.dsl.module
+import org.example.project.exchange.data.datasource.RealTimeDataBase
+import org.example.project.exchange.data.repository.ExchangeRepositoryImpl
+import org.example.project.exchange.domain.repository.ExchangeRepository
 val dataModule = module {
 
+    // GitHub
     single<GithubRemoteDataSource> {
         GitHubApiService()
     }
@@ -36,6 +37,7 @@ val dataModule = module {
         GithubRepositoryImpl(get())
     }
 
+    // Catalog
     single<CatalogRemoteDataSource> {
         CatalogService()
     }
@@ -44,14 +46,16 @@ val dataModule = module {
         CatalogRepositoryImpl(get())
     }
 
-<<<<<<< HEAD
+    // Earthquakes
     single<EarthquakeRemoteDataSource> {
         EarthquakeService()
     }
 
     single<EarthquakeRepository> {
         EarthquakeRepositoryImpl(get())
-=======
+    }
+
+    // Room - Dollar
     single<DollarDao> {
         get<AppDatabase>().getDao()
     }
@@ -60,6 +64,11 @@ val dataModule = module {
 
     single<DollarRepository> {
         DollarRepositoryImpl(get())
->>>>>>> a74076a (Firebase and cambios de bd)
+    }
+
+    singleOf(::RealTimeDataBase)
+
+    single<ExchangeRepository> {
+        ExchangeRepositoryImpl(get())
     }
 }

@@ -28,7 +28,7 @@ kotlin {
         minSdk = libs.versions.android.minSdk.get().toInt()
 
         compilerOptions {
-            jvmTarget = JvmTarget.JVM_11
+            jvmTarget = JvmTarget.JVM_17
         }
 
         androidResources {
@@ -52,11 +52,7 @@ kotlin {
             implementation(libs.compose.uiToolingPreview)
             implementation(libs.compose.uiTooling)
 
-<<<<<<< HEAD
-            // Motor HTTP para Android
-=======
             // Ktor engine para Android
->>>>>>> a74076a (Firebase and cambios de bd)
             implementation(libs.ktor.client.okhttp)
         }
 
@@ -74,40 +70,29 @@ kotlin {
             implementation(libs.androidx.lifecycle.viewmodelCompose)
             implementation(libs.androidx.lifecycle.runtimeCompose)
 
-<<<<<<< HEAD
-=======
             // Koin
->>>>>>> a74076a (Firebase and cambios de bd)
             implementation(libs.koin.core)
             implementation(libs.koin.compose)
             implementation(libs.koin.compose.viewmodel)
 
-<<<<<<< HEAD
-=======
             // Navigation
->>>>>>> a74076a (Firebase and cambios de bd)
             implementation(libs.navigation.compose)
             implementation(libs.kotlinx.serialization.json)
 
-            // Ktor compartido
+            // Ktor
             implementation(libs.ktor.client.core)
             implementation(libs.ktor.client.content.negotiation)
             implementation(libs.ktor.serialization.kotlinx.json)
-<<<<<<< HEAD
-        }
-
-        iosMain.dependencies {
-            // Motor HTTP para iOS
-=======
 
             // Room
             implementation(libs.androidx.room3.runtime)
             implementation(libs.androidx.sqlite.bundled)
+            // Firebase Realtime Database
+            implementation(libs.firebase.database)
         }
 
         iosMain.dependencies {
             // Ktor engine para iOS
->>>>>>> a74076a (Firebase and cambios de bd)
             implementation(libs.ktor.client.darwin)
         }
 
@@ -121,7 +106,7 @@ dependencies {
 
     androidRuntimeClasspath(libs.compose.uiTooling)
 
-    // Room compiler para cada target
+    // Room compiler
     add("kspAndroid", libs.androidx.room3.compiler)
     add("kspIosSimulatorArm64", libs.androidx.room3.compiler)
     add("kspIosArm64", libs.androidx.room3.compiler)
